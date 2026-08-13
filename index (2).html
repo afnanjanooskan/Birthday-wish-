@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Happy Birthday Logan! 🎉" />
+  <title>🎉 Happy Birthday Logan!</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── ANIMATED BACKGROUND ───────────────────────────── -->
+  <div id="bg-layer"></div>
+  <canvas id="particle-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+  <canvas id="firework-canvas"></canvas>
+
+  <!-- ── MUSIC ─────────────────────────────────────────── -->
+  <!-- To change music: replace music/birthday.mp3 with your file -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="music/birthday.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ── MUSIC PLAYER ──────────────────────────────────── -->
+  <div id="music-player">
+    <button id="play-pause-btn" onclick="togglePlayPause()" aria-label="Play/Pause">
+      <!-- Icon injected by JS -->
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </button>
+    <div class="music-info">
+      <span class="music-label">🎵 Birthday Song</span>
+      <input type="range" id="volume-slider" min="0" max="100" value="70"
+             oninput="setVolume(this.value)" aria-label="Volume" />
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       WELCOME SCREEN
+  ═══════════════════════════════════════════════════════ -->
+  <div id="welcome-screen">
+
+    <div class="cake-wrapper">
+      <!-- SVG Birthday Cake -->
+      <svg viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Candles -->
+        <rect x="40" y="28" width="8" height="26" rx="2" fill="#d4af37"/>
+        <rect x="76" y="18" width="8" height="32" rx="2" fill="#2d5fcc"/>
+        <rect x="112" y="28" width="8" height="26" rx="2" fill="#d4af37"/>
+        <!-- Flames -->
+        <ellipse cx="44" cy="24" rx="5" ry="8" fill="#ff9933" opacity="0.9" class="candle-flame"/>
+        <ellipse cx="44" cy="22" rx="3" ry="5" fill="#ffdd55"/>
+        <ellipse cx="80" cy="14" rx="5" ry="8" fill="#ff9933" opacity="0.9" class="candle-flame"/>
+        <ellipse cx="80" cy="12" rx="3" ry="5" fill="#ffdd55"/>
+        <ellipse cx="116" cy="24" rx="5" ry="8" fill="#ff9933" opacity="0.9" class="candle-flame"/>
+        <ellipse cx="116" cy="22" rx="3" ry="5" fill="#ffdd55"/>
+        <!-- Top tier -->
+        <rect x="36" y="54" width="88" height="32" rx="5" fill="#1a3a8f"/>
+        <rect x="36" y="54" width="88" height="10" rx="5" fill="#2d5fcc"/>
+        <!-- Frosting drips -->
+        <ellipse cx="55"  cy="54" rx="6" ry="5" fill="white" opacity="0.9"/>
+        <ellipse cx="80"  cy="54" rx="6" ry="5" fill="white" opacity="0.9"/>
+        <ellipse cx="105" cy="54" rx="6" ry="5" fill="white" opacity="0.9"/>
+        <rect x="49" y="55" width="12" height="14" rx="0" fill="white" opacity="0.9"/>
+        <rect x="74" y="55" width="12" height="14" rx="0" fill="white" opacity="0.9"/>
+        <rect x="99" y="55" width="12" height="14" rx="0" fill="white" opacity="0.9"/>
+        <!-- Stars on top tier -->
+        <text x="52" y="78" font-size="12" fill="#d4af37">★</text>
+        <text x="88" y="78" font-size="12" fill="#d4af37">★</text>
+        <!-- Middle tier -->
+        <rect x="22" y="86" width="116" height="38" rx="5" fill="#d4af37"/>
+        <rect x="22" y="86" width="116" height="12" rx="5" fill="#f0d060"/>
+        <!-- Dots on middle -->
+        <circle cx="50"  cy="108" r="4" fill="#1a3a8f"/>
+        <circle cx="80"  cy="108" r="4" fill="white"/>
+        <circle cx="110" cy="108" r="4" fill="#1a3a8f"/>
+        <!-- Bottom tier -->
+        <rect x="10" y="124" width="140" height="44" rx="6" fill="#1a3a8f"/>
+        <rect x="10" y="124" width="140" height="14" rx="6" fill="#2d5fcc"/>
+        <!-- Bottom frosting -->
+        <ellipse cx="35"  cy="124" rx="8" ry="7" fill="white" opacity="0.85"/>
+        <ellipse cx="60"  cy="124" rx="8" ry="7" fill="white" opacity="0.85"/>
+        <ellipse cx="85"  cy="124" rx="8" ry="7" fill="white" opacity="0.85"/>
+        <ellipse cx="110" cy="124" rx="8" ry="7" fill="white" opacity="0.85"/>
+        <ellipse cx="135" cy="124" rx="8" ry="7" fill="white" opacity="0.85"/>
+        <!-- Bottom drips -->
+        <rect x="27" y="125" width="16" height="18" fill="white" opacity="0.85"/>
+        <rect x="52" y="125" width="16" height="18" fill="white" opacity="0.85"/>
+        <rect x="77" y="125" width="16" height="18" fill="white" opacity="0.85"/>
+        <rect x="102" y="125" width="16" height="18" fill="white" opacity="0.85"/>
+        <!-- Gold text on bottom tier -->
+        <text x="80" y="154" font-size="13" font-family="serif" font-weight="bold"
+              fill="#d4af37" text-anchor="middle">HAPPY BIRTHDAY</text>
+        <!-- Plate -->
+        <ellipse cx="80" cy="169" rx="78" ry="8" fill="rgba(212,175,55,0.3)"/>
+      </svg>
+    </div>
+
+    <p class="welcome-emoji">🎉</p>
+    <p class="welcome-title">Happy Birthday</p>
+    <h1 class="welcome-name">Logan</h1>
+    <p class="welcome-sub">A Special Surprise Awaits You</p>
+
+    <button id="open-btn" onclick="openSurprise()">
+      🎁 &nbsp;Open Your Surprise
+    </button>
+
+  </div><!-- /welcome-screen -->
+
+  <!-- ══════════════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════════════ -->
+  <div id="main-content">
+
+    <!-- ── HERO ───────────────────────────────────────── -->
+    <section id="hero">
+      <div class="section-inner">
+        <p class="hero-party">🎊 🎈 🎉</p>
+        <h2 class="hero-title">Happy Birthday<br>Logan</h2>
+        <div class="gold-line"></div>
+        <p class="hero-sub">Today is all about celebrating you.</p>
+        <p class="hero-icons">
+          🎂 &nbsp;
+          <span class="candle-flame">🕯️</span>&nbsp;
+          🎁 &nbsp;
+          <span class="candle-flame">✨</span>&nbsp;
+          🎊
+        </p>
+      </div>
+    </section>
+
+    <!-- ── GALLERY ─────────────────────────────────────── -->
+    <section id="gallery">
+      <div class="section-inner">
+        <p class="section-tag reveal">Photo Gallery</p>
+        <h2 class="hero-title reveal" style="font-size:clamp(2rem,7vw,4.5rem); text-align:center;">
+          Moments &amp; Memories
+        </h2>
+
+        <div class="gallery-container reveal">
+          <div class="gallery-track" id="gallery-track">
+            <!-- Slides injected by JS -->
+          </div>
+          <button class="gallery-nav-btn" id="gallery-prev" aria-label="Previous">&#8592;</button>
+          <button class="gallery-nav-btn" id="gallery-next" aria-label="Next">&#8594;</button>
+        </div>
+
+        <div class="gallery-dots" id="gallery-dots"></div>
+        <p id="gallery-caption" style="text-align:center; margin-top:0.8rem; font-style:italic; color:rgba(255,255,255,0.45); font-size:0.9rem; transition:opacity 0.4s; min-height:1.4em;"></p>
+        <p class="fullscreen-hint">Tap photo to enlarge</p>
+      </div>
+    </section>
+
+    <!-- ── MESSAGE ─────────────────────────────────────── -->
+    <section id="message">
+      <div class="section-inner">
+        <p class="section-tag reveal">Birthday Message</p>
+        <h2 class="hero-title reveal" style="font-size:clamp(2rem,7vw,4rem); text-align:center; margin-bottom:0;">
+          A Message For You
+        </h2>
+
+        <div class="message-card reveal">
+          <p class="message-salute">Dear Logan,</p>
+          <div class="message-body" id="msg-body"></div>
+          <span class="message-cursor" id="msg-cursor"></span>
+          <p class="message-sign">— With love &amp; celebration 🥂</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FINALE ──────────────────────────────────────── -->
+    <section id="finale">
+      <div class="section-inner reveal">
+        <div class="finale-emoji-row">🎆 🎇 ✨ 🎆</div>
+        <h2 class="finale-title">Happy Birthday<br>Logan!</h2>
+        <div class="gold-line"></div>
+        <p class="finale-sub">
+          Wishing you happiness, success, good health,<br>
+          and an unforgettable year ahead. 🥂
+        </p>
+        <div class="finale-emoji-row" style="margin-top:2rem;">🎉 🎈 🎊 🎁 🌟</div>
+      </div>
+    </section>
+
+  </div><!-- /main-content -->
+
+  <!-- ── FULLSCREEN VIEWER ──────────────────────────────── -->
+  <div id="fullscreen-viewer" role="dialog" aria-label="Fullscreen photo">
+    <button id="fs-close" aria-label="Close">&times;</button>
+    <img id="fs-img" src="" alt="Fullscreen view" />
+  </div>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────── -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
