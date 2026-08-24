@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
-   IAN BIRTHDAY — main.js
+   HILAL BIRTHDAY — main.js
    ═══════════════════════════════════════════════════════════ */
 
 /* ── CONFIG — edit these to personalise ──────────────────── */
 const CONFIG = {
-  name: "Ian",
+  name: "Hilal",
 
-  message: `Happy Birthday, Ian! 🎉
+  message: `Happy Birthday, Hilal! 🎉
 
 Today, we celebrate you — your energy, your spirit, and everything that makes you who you are.
 
@@ -19,7 +19,7 @@ Happy Birthday! 🥂 This one's for you. 🥂`,
   photos: [
     {
       src: "images/photo1.jpg",
-      caption: "📸 Ian — always in the moment"
+      caption: "📸 Hilal — always in the moment"
     },
     {
       src: "images/photo2.jpg",
@@ -1199,4 +1199,4 @@ function initClickEffects() {
 
     }
   );
-}
+       }
