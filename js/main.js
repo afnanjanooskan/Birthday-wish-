@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
-   JANNAT BIRTHDAY — main.js
+   HAROON BIRTHDAY — main.js
    ═══════════════════════════════════════════════════════════ */
 
 /* ── CONFIG — edit these to personalise ──────────────────── */
 const CONFIG = {
-  name: "Jannat",
+  name: "Haroon",
 
-  message: `Happy Birthday, Jannat! 🎉
+  message: `Happy Birthday, Haroon! 🎉
 
 Today, we celebrate you — your energy, your spirit, and everything that makes you who you are.
 
@@ -19,7 +19,7 @@ Happy Birthday! 🥂 This one's for you. 🥂`,
   photos: [
     {
       src: "images/photo1.jpg",
-      caption: "📸 Jannat — always in the moment"
+      caption: "📸 Haroon — always in the moment"
     },
     {
       src: "images/photo2.jpg",
@@ -1199,5 +1199,4 @@ function initClickEffects() {
 
     }
   );
-                                }
-       
+}
