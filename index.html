@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Happy Birthday Haroon! 🎉" />
-  <title>🎉 Happy Birthday Haroon!</title>
+  <meta name="description" content="Happy Birthday Owen! 🎉" />
+  <title>🎉 Happy Birthday Owen!</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -15,31 +14,20 @@
     rel="stylesheet"
   />
 
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
-  <!-- ── ANIMATED BACKGROUND ───────────────────────────── -->
   <div id="bg-layer"></div>
 
   <canvas id="particle-canvas"></canvas>
   <canvas id="confetti-canvas"></canvas>
   <canvas id="firework-canvas"></canvas>
 
-
-  <!-- ── MUSIC ─────────────────────────────────────────── -->
-
-  <!-- To change music:
-       replace music/birthday.mp3 with your file -->
-
   <audio id="bg-music" loop preload="auto">
     <source src="music/birthday.mp3" type="audio/mpeg" />
   </audio>
-
-
-  <!-- ── MUSIC PLAYER ──────────────────────────────────── -->
 
   <div id="music-player">
 
@@ -54,7 +42,6 @@
     </button>
 
     <div class="music-info">
-
       <span class="music-label">
         🎵 Birthday Song
       </span>
@@ -68,28 +55,18 @@
         oninput="setVolume(this.value)"
         aria-label="Volume"
       />
-
     </div>
 
   </div>
-
-
-  <!-- ══════════════════════════════════════════════════════
-       WELCOME SCREEN
-  ═══════════════════════════════════════════════════════ -->
 
   <div id="welcome-screen">
 
     <div class="cake-wrapper">
 
-      <!-- SVG Birthday Cake -->
-
       <svg
         viewBox="0 0 160 180"
         xmlns="http://www.w3.org/2000/svg"
       >
-
-        <!-- Candles -->
 
         <rect
           x="40"
@@ -118,9 +95,6 @@
           fill="#d4af37"
         />
 
-
-        <!-- Flames -->
-
         <ellipse
           cx="44"
           cy="24"
@@ -138,7 +112,6 @@
           ry="5"
           fill="#ffdd55"
         />
-
 
         <ellipse
           cx="80"
@@ -158,7 +131,6 @@
           fill="#ffdd55"
         />
 
-
         <ellipse
           cx="116"
           cy="24"
@@ -177,9 +149,6 @@
           fill="#ffdd55"
         />
 
-
-        <!-- Top tier -->
-
         <rect
           x="36"
           y="54"
@@ -197,9 +166,6 @@
           rx="5"
           fill="#c2185b"
         />
-
-
-        <!-- Frosting drips -->
 
         <ellipse
           cx="55"
@@ -228,13 +194,11 @@
           opacity="0.9"
         />
 
-
         <rect
           x="49"
           y="55"
           width="12"
           height="14"
-          rx="0"
           fill="white"
           opacity="0.9"
         />
@@ -244,7 +208,6 @@
           y="55"
           width="12"
           height="14"
-          rx="0"
           fill="white"
           opacity="0.9"
         />
@@ -254,34 +217,23 @@
           y="55"
           width="12"
           height="14"
-          rx="0"
           fill="white"
           opacity="0.9"
         />
-
-
-        <!-- Stars on top tier -->
 
         <text
           x="52"
           y="78"
           font-size="12"
           fill="#d4af37"
-        >
-          ★
-        </text>
+        >★</text>
 
         <text
           x="88"
           y="78"
           font-size="12"
           fill="#d4af37"
-        >
-          ★
-        </text>
-
-
-        <!-- Middle tier -->
+        >★</text>
 
         <rect
           x="22"
@@ -300,9 +252,6 @@
           rx="5"
           fill="#f0d060"
         />
-
-
-        <!-- Dots on middle -->
 
         <circle
           cx="50"
@@ -325,9 +274,6 @@
           fill="#8b174d"
         />
 
-
-        <!-- Bottom tier -->
-
         <rect
           x="10"
           y="124"
@@ -345,9 +291,6 @@
           rx="6"
           fill="#c2185b"
         />
-
-
-        <!-- Bottom frosting -->
 
         <ellipse
           cx="35"
@@ -394,9 +337,6 @@
           opacity="0.85"
         />
 
-
-        <!-- Bottom drips -->
-
         <rect
           x="27"
           y="125"
@@ -433,9 +373,6 @@
           opacity="0.85"
         />
 
-
-        <!-- Gold text -->
-
         <text
           x="80"
           y="154"
@@ -447,9 +384,6 @@
         >
           HAPPY BIRTHDAY
         </text>
-
-
-        <!-- Plate -->
 
         <ellipse
           cx="80"
@@ -463,7 +397,6 @@
 
     </div>
 
-
     <p class="welcome-emoji">
       🎉
     </p>
@@ -473,13 +406,12 @@
     </p>
 
     <h1 class="welcome-name">
-      Haroon
+      Owen
     </h1>
 
     <p class="welcome-sub">
       A Special Surprise Awaits You
     </p>
-
 
     <button
       id="open-btn"
@@ -490,15 +422,7 @@
 
   </div>
 
-
-  <!-- ══════════════════════════════════════════════════════
-       MAIN CONTENT
-  ═══════════════════════════════════════════════════════ -->
-
   <div id="main-content">
-
-
-    <!-- ── HERO ───────────────────────────────────────── -->
 
     <section id="hero">
 
@@ -509,7 +433,7 @@
         </p>
 
         <h2 class="hero-title">
-          Happy Birthday<br>Haroon
+          Happy Birthday<br>Owen
         </h2>
 
         <div class="gold-line"></div>
@@ -519,33 +443,18 @@
         </p>
 
         <p class="hero-icons">
-
           🎂 &nbsp;
-
-          <span class="candle-flame">
-            🕯️
-          </span>
-
+          <span class="candle-flame">🕯️</span>
           &nbsp;
-
           🎁 &nbsp;
-
-          <span class="candle-flame">
-            ✨
-          </span>
-
+          <span class="candle-flame">✨</span>
           &nbsp;
-
           🎊
-
         </p>
 
       </div>
 
     </section>
-
-
-    <!-- ── GALLERY ─────────────────────────────────────── -->
 
     <section id="gallery">
 
@@ -554,7 +463,6 @@
         <p class="section-tag reveal">
           Photo Gallery
         </p>
-
 
         <h2
           class="hero-title reveal"
@@ -566,16 +474,12 @@
           Moments &amp; Memories
         </h2>
 
-
         <div class="gallery-container reveal">
 
           <div
             class="gallery-track"
             id="gallery-track"
-          >
-            <!-- Slides injected by JS -->
-          </div>
-
+          ></div>
 
           <button
             class="gallery-nav-btn"
@@ -584,7 +488,6 @@
           >
             &#8592;
           </button>
-
 
           <button
             class="gallery-nav-btn"
@@ -596,12 +499,10 @@
 
         </div>
 
-
         <div
           class="gallery-dots"
           id="gallery-dots"
         ></div>
-
 
         <p
           id="gallery-caption"
@@ -616,7 +517,6 @@
           "
         ></p>
 
-
         <p class="fullscreen-hint">
           Tap photo to enlarge
         </p>
@@ -625,9 +525,6 @@
 
     </section>
 
-
-    <!-- ── MESSAGE ─────────────────────────────────────── -->
-
     <section id="message">
 
       <div class="section-inner">
@@ -635,7 +532,6 @@
         <p class="section-tag reveal">
           Birthday Message
         </p>
-
 
         <h2
           class="hero-title reveal"
@@ -648,25 +544,21 @@
           A Message For You
         </h2>
 
-
         <div class="message-card reveal">
 
           <p class="message-salute">
-            Dear Haroon,
+            Dear Owen,
           </p>
-
 
           <div
             class="message-body"
             id="msg-body"
           ></div>
 
-
           <span
             class="message-cursor"
             id="msg-cursor"
           ></span>
-
 
           <p class="message-sign">
             — With love &amp; celebration 🥂
@@ -678,9 +570,6 @@
 
     </section>
 
-
-    <!-- ── FINALE ──────────────────────────────────────── -->
-
     <section id="finale">
 
       <div class="section-inner reveal">
@@ -689,20 +578,16 @@
           🎆 🎇 ✨ 🎆
         </div>
 
-
         <h2 class="finale-title">
-          Happy Birthday<br>Haroon!
+          Happy Birthday<br>Owen!
         </h2>
 
-
         <div class="gold-line"></div>
-
 
         <p class="finale-sub">
           Wishing you happiness, success, good health,<br>
           and an unforgettable year ahead. 🥂
         </p>
-
 
         <div
           class="finale-emoji-row"
@@ -717,9 +602,6 @@
 
   </div>
 
-
-  <!-- ── FULLSCREEN VIEWER ──────────────────────────────── -->
-
   <div
     id="fullscreen-viewer"
     role="dialog"
@@ -733,7 +615,6 @@
       &times;
     </button>
 
-
     <img
       id="fs-img"
       src=""
@@ -741,9 +622,6 @@
     />
 
   </div>
-
-
-  <!-- ── SCRIPTS ────────────────────────────────────────── -->
 
   <script src="js/main.js"></script>
 
