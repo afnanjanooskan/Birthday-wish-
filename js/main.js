@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════
-   HAROON BIRTHDAY — main.js
+   OWEN BIRTHDAY — main.js
    ═══════════════════════════════════════════════════════════ */
 
 /* ── CONFIG — edit these to personalise ──────────────────── */
 const CONFIG = {
-  name: "Haroon",
+  name: "Owen",
 
-  message: `Happy Birthday, Haroon! 🎉
+  message: `Happy Birthday, Owen! 🎉
 
 Today, we celebrate you — your energy, your spirit, and everything that makes you who you are.
 
@@ -19,7 +19,7 @@ Happy Birthday! 🥂 This one's for you. 🥂`,
   photos: [
     {
       src: "images/photo1.jpg",
-      caption: "📸 Haroon — always in the moment"
+      caption: "📸 Owen — always in the moment"
     },
     {
       src: "images/photo2.jpg",
@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initMessage();
   initFireworksObserver();
 
-  // Try autoplay
   const audio = document.getElementById("bg-music");
   audio.volume = 0;
 
@@ -67,8 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ── MUSIC ───────────────────────────────────────────────── */
 function fadeInMusic() {
   const audio = document.getElementById("bg-music");
+
   const vol =
-    parseFloat(document.getElementById("volume-slider").value) / 100;
+    parseFloat(
+      document.getElementById("volume-slider").value
+    ) / 100;
 
   audio.volume = 0;
 
@@ -104,7 +106,8 @@ function startMusicOnInteraction() {
 
 
 function updatePlayBtn(playing) {
-  const btn = document.getElementById("play-pause-btn");
+  const btn =
+    document.getElementById("play-pause-btn");
 
   btn.innerHTML = playing
     ? `<svg viewBox="0 0 24 24">
@@ -118,7 +121,8 @@ function updatePlayBtn(playing) {
 
 
 window.togglePlayPause = function () {
-  const audio = document.getElementById("bg-music");
+  const audio =
+    document.getElementById("bg-music");
 
   if (audio.paused) {
     audio.play();
@@ -131,7 +135,9 @@ window.togglePlayPause = function () {
 
 
 window.setVolume = function (val) {
-  const audio = document.getElementById("bg-music");
+  const audio =
+    document.getElementById("bg-music");
+
   audio.volume = val / 100;
 };
 
@@ -140,9 +146,14 @@ window.setVolume = function (val) {
 window.openSurprise = function () {
   startMusicOnInteraction();
 
-  const welcome = document.getElementById("welcome-screen");
-  const main = document.getElementById("main-content");
-  const player = document.getElementById("music-player");
+  const welcome =
+    document.getElementById("welcome-screen");
+
+  const main =
+    document.getElementById("main-content");
+
+  const player =
+    document.getElementById("music-player");
 
   welcome.classList.add("hidden");
 
@@ -150,24 +161,31 @@ window.openSurprise = function () {
     main.classList.add("visible");
     player.classList.add("visible");
 
-    // Fire celebration on entry
-    setTimeout(() => launchCelebration(), 800);
+    setTimeout(() => {
+      launchCelebration();
+    }, 800);
   }, 500);
 };
 
 
-// Also start music on any tap of welcome screen
 document
   .getElementById("welcome-screen")
-  ?.addEventListener("click", startMusicOnInteraction);
+  ?.addEventListener(
+    "click",
+    startMusicOnInteraction
+  );
 
 
 /* ── PARTICLE BACKGROUND ─────────────────────────────────── */
 function initParticles() {
-  const canvas = document.getElementById("particle-canvas");
-  const ctx = canvas.getContext("2d");
+  const canvas =
+    document.getElementById("particle-canvas");
+
+  const ctx =
+    canvas.getContext("2d");
 
   let particles = [];
+
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -176,21 +194,32 @@ function initParticles() {
 
   resize();
 
-  window.addEventListener("resize", () => {
-    resize();
-  });
+  window.addEventListener(
+    "resize",
+    () => {
+      resize();
+    }
+  );
 
 
   class Particle {
+
     constructor() {
       this.reset(true);
     }
 
+
     reset(init = false) {
-      this.x = Math.random() * canvas.width;
+
+      this.x =
+        Math.random() *
+        canvas.width;
+
       this.y = init
-        ? Math.random() * canvas.height
+        ? Math.random() *
+          canvas.height
         : canvas.height + 10;
+
 
       this.type =
         Math.random() < 0.3
@@ -199,41 +228,68 @@ function initParticles() {
           ? "star"
           : "firefly";
 
+
       this.size =
         this.type === "balloon"
           ? 10 + Math.random() * 14
           : 1.5 + Math.random() * 3;
 
-      this.speedY = -(0.3 + Math.random() * 0.8);
-      this.speedX = (Math.random() - 0.5) * 0.5;
-      this.alpha = 0.3 + Math.random() * 0.6;
 
-      // gold or blue
-      this.hue = Math.random() < 0.5 ? 45 : 220;
+      this.speedY =
+        -(0.3 + Math.random() * 0.8);
 
-      this.phase = Math.random() * Math.PI * 2;
-      this.wobble = 0.3 + Math.random() * 0.7;
+      this.speedX =
+        (Math.random() - 0.5) * 0.5;
+
+      this.alpha =
+        0.3 + Math.random() * 0.6;
+
+
+      this.hue =
+        Math.random() < 0.5
+          ? 45
+          : 220;
+
+
+      this.phase =
+        Math.random() *
+        Math.PI *
+        2;
+
+      this.wobble =
+        0.3 + Math.random() * 0.7;
     }
 
+
     update(t) {
+
       this.y += this.speedY;
 
       this.x +=
         this.speedX +
-        Math.sin(t * 0.001 + this.phase) * this.wobble;
+        Math.sin(
+          t * 0.001 +
+          this.phase
+        ) *
+        this.wobble;
+
 
       if (this.y < -30) {
         this.reset();
       }
     }
 
+
     draw() {
+
       ctx.save();
-      ctx.globalAlpha = this.alpha;
+
+      ctx.globalAlpha =
+        this.alpha;
+
 
       if (this.type === "balloon") {
 
-        // Balloon shape
         ctx.beginPath();
 
         ctx.ellipse(
@@ -253,6 +309,7 @@ function initParticles() {
 
         ctx.fill();
 
+
         ctx.beginPath();
 
         ctx.moveTo(
@@ -262,7 +319,9 @@ function initParticles() {
 
         ctx.lineTo(
           this.x,
-          this.y + this.size + 12
+          this.y +
+            this.size +
+            12
         );
 
         ctx.strokeStyle =
@@ -271,11 +330,13 @@ function initParticles() {
             : "rgba(45,95,204,0.4)";
 
         ctx.lineWidth = 1;
+
         ctx.stroke();
 
-      } else if (this.type === "star") {
+      } else if (
+        this.type === "star"
+      ) {
 
-        // Star sparkle
         ctx.fillStyle =
           `hsla(${this.hue}, 90%, 75%, 1)`;
 
@@ -292,6 +353,7 @@ function initParticles() {
         ctx.fill();
 
         ctx.shadowBlur = 8;
+
         ctx.shadowColor =
           `hsla(${this.hue}, 90%, 75%, 0.8)`;
 
@@ -299,7 +361,6 @@ function initParticles() {
 
       } else {
 
-        // Firefly
         const pulse =
           0.5 +
           0.5 *
@@ -322,6 +383,7 @@ function initParticles() {
           `rgba(212,175,55,${0.4 * pulse})`;
 
         ctx.shadowBlur = 12;
+
         ctx.shadowColor =
           "rgba(212,175,55,0.6)";
 
@@ -334,13 +396,17 @@ function initParticles() {
 
 
   for (let i = 0; i < 80; i++) {
-    particles.push(new Particle());
+    particles.push(
+      new Particle()
+    );
   }
 
 
   let t = 0;
 
+
   function animate() {
+
     ctx.clearRect(
       0,
       0,
@@ -355,7 +421,9 @@ function initParticles() {
       p.draw();
     });
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(
+      animate
+    );
   }
 
   animate();
@@ -364,8 +432,12 @@ function initParticles() {
 
 /* ── SPARKLES ON WELCOME ─────────────────────────────────── */
 function initSparkles() {
+
   const welcome =
-    document.getElementById("welcome-screen");
+    document.getElementById(
+      "welcome-screen"
+    );
+
 
   const symbols = [
     "✨",
@@ -375,13 +447,20 @@ function initSparkles() {
     "⚡"
   ];
 
-  for (let i = 0; i < 12; i++) {
-    const s = document.createElement("div");
 
-    s.className = "sparkle";
+  for (let i = 0; i < 12; i++) {
+
+    const s =
+      document.createElement("div");
+
+    s.className =
+      "sparkle";
 
     s.textContent =
-      symbols[i % symbols.length];
+      symbols[
+        i % symbols.length
+      ];
+
 
     s.style.left =
       `${5 + Math.random() * 90}%`;
@@ -402,13 +481,22 @@ function initSparkles() {
 
 /* ── CONFETTI ────────────────────────────────────────────── */
 function launchCelebration() {
+
   const canvas =
-    document.getElementById("confetti-canvas");
+    document.getElementById(
+      "confetti-canvas"
+    );
 
-  const ctx = canvas.getContext("2d");
+  const ctx =
+    canvas.getContext("2d");
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+
+  canvas.width =
+    window.innerWidth;
+
+  canvas.height =
+    window.innerHeight;
+
 
   const colors = [
     "#d4af37",
@@ -420,27 +508,63 @@ function launchCelebration() {
     "#ffd700"
   ];
 
+
   const pieces = [];
 
+
   for (let i = 0; i < 220; i++) {
+
     pieces.push({
-      x: Math.random() * canvas.width,
-      y: -20 - Math.random() * 200,
-      w: 6 + Math.random() * 10,
-      h: 3 + Math.random() * 6,
+
+      x:
+        Math.random() *
+        canvas.width,
+
+      y:
+        -20 -
+        Math.random() *
+        200,
+
+      w:
+        6 +
+        Math.random() *
+        10,
+
+      h:
+        3 +
+        Math.random() *
+        6,
 
       color:
         colors[
           Math.floor(
-            Math.random() * colors.length
+            Math.random() *
+            colors.length
           )
         ],
 
-      speed: 2.5 + Math.random() * 4,
-      angle: Math.random() * Math.PI * 2,
-      spin: (Math.random() - 0.5) * 0.18,
-      drift: (Math.random() - 0.5) * 2,
-      opacity: 0.85 + Math.random() * 0.15,
+      speed:
+        2.5 +
+        Math.random() *
+        4,
+
+      angle:
+        Math.random() *
+        Math.PI *
+        2,
+
+      spin:
+        (Math.random() - 0.5) *
+        0.18,
+
+      drift:
+        (Math.random() - 0.5) *
+        2,
+
+      opacity:
+        0.85 +
+        Math.random() *
+        0.15,
 
       shape:
         Math.random() < 0.3
@@ -452,7 +576,9 @@ function launchCelebration() {
 
   let frame = 0;
 
+
   function draw() {
+
     ctx.clearRect(
       0,
       0,
@@ -460,7 +586,9 @@ function launchCelebration() {
       canvas.height
     );
 
+
     let alive = false;
+
 
     pieces.forEach((p) => {
 
@@ -468,14 +596,26 @@ function launchCelebration() {
       p.x += p.drift;
       p.angle += p.spin;
 
-      if (p.y < canvas.height + 20) {
+
+      if (
+        p.y <
+        canvas.height + 20
+      ) {
         alive = true;
       }
 
+
       ctx.save();
 
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.angle);
+      ctx.translate(
+        p.x,
+        p.y
+      );
+
+      ctx.rotate(
+        p.angle
+      );
+
 
       ctx.globalAlpha =
         p.opacity *
@@ -484,9 +624,14 @@ function launchCelebration() {
           1 - frame / 300
         );
 
-      ctx.fillStyle = p.color;
 
-      if (p.shape === "circle") {
+      ctx.fillStyle =
+        p.color;
+
+
+      if (
+        p.shape === "circle"
+      ) {
 
         ctx.beginPath();
 
@@ -510,14 +655,25 @@ function launchCelebration() {
         );
       }
 
+
       ctx.restore();
     });
 
+
     frame++;
 
-    if (alive && frame < 320) {
-      requestAnimationFrame(draw);
+
+    if (
+      alive &&
+      frame < 320
+    ) {
+
+      requestAnimationFrame(
+        draw
+      );
+
     } else {
+
       ctx.clearRect(
         0,
         0,
@@ -527,24 +683,35 @@ function launchCelebration() {
     }
   }
 
+
   draw();
 }
 
 
 /* ── FIREWORKS ───────────────────────────────────────────── */
 function launchFireworks() {
+
   const canvas =
-    document.getElementById("firework-canvas");
+    document.getElementById(
+      "firework-canvas"
+    );
 
-  const ctx = canvas.getContext("2d");
+  const ctx =
+    canvas.getContext("2d");
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+
+  canvas.width =
+    window.innerWidth;
+
+  canvas.height =
+    window.innerHeight;
+
 
   const fireworks = [];
 
 
   function spawnFirework() {
+
     const x =
       canvas.width *
       (0.2 + Math.random() * 0.6);
@@ -553,14 +720,18 @@ function launchFireworks() {
       canvas.height *
       (0.1 + Math.random() * 0.4);
 
+
     const color =
       Math.random() < 0.5
         ? "#d4af37"
         : "#4d7fff";
 
+
     const count =
       40 +
-      Math.floor(Math.random() * 30);
+      Math.floor(
+        Math.random() * 30
+      );
 
 
     for (let i = 0; i < count; i++) {
@@ -570,11 +741,14 @@ function launchFireworks() {
         Math.PI *
         2;
 
+
       const speed =
         2 +
         Math.random() * 4;
 
+
       fireworks.push({
+
         x,
         y,
 
@@ -604,6 +778,7 @@ function launchFireworks() {
 
   let spawned = 0;
 
+
   const spawnInterval =
     setInterval(() => {
 
@@ -611,8 +786,11 @@ function launchFireworks() {
 
       spawned++;
 
+
       if (spawned >= 6) {
-        clearInterval(spawnInterval);
+        clearInterval(
+          spawnInterval
+        );
       }
 
     }, 600);
@@ -622,6 +800,7 @@ function launchFireworks() {
 
     ctx.fillStyle =
       "rgba(6,8,16,0.15)";
+
 
     ctx.fillRect(
       0,
@@ -636,15 +815,19 @@ function launchFireworks() {
       f.x += f.vx;
       f.y += f.vy;
 
-      // gravity
       f.vy += 0.05;
 
       f.alpha -= f.decay;
 
+
       ctx.save();
 
       ctx.globalAlpha =
-        Math.max(0, f.alpha);
+        Math.max(
+          0,
+          f.alpha
+        );
+
 
       ctx.beginPath();
 
@@ -656,10 +839,14 @@ function launchFireworks() {
         Math.PI * 2
       );
 
-      ctx.fillStyle = f.color;
+
+      ctx.fillStyle =
+        f.color;
 
       ctx.shadowBlur = 8;
-      ctx.shadowColor = f.color;
+
+      ctx.shadowColor =
+        f.color;
 
       ctx.fill();
 
@@ -667,13 +854,15 @@ function launchFireworks() {
     });
 
 
-    // Remove dead particles
     for (
       let i = fireworks.length - 1;
       i >= 0;
       i--
     ) {
-      if (fireworks[i].alpha <= 0) {
+
+      if (
+        fireworks[i].alpha <= 0
+      ) {
         fireworks.splice(i, 1);
       }
     }
@@ -683,8 +872,13 @@ function launchFireworks() {
       fireworks.length > 0 ||
       spawned < 6
     ) {
-      requestAnimationFrame(draw);
+
+      requestAnimationFrame(
+        draw
+      );
+
     } else {
+
       ctx.clearRect(
         0,
         0,
@@ -694,15 +888,21 @@ function launchFireworks() {
     }
   }
 
+
   draw();
 }
 
 
 function initFireworksObserver() {
+
   const finale =
-    document.getElementById("finale");
+    document.getElementById(
+      "finale"
+    );
+
 
   let fired = false;
+
 
   const obs =
     new IntersectionObserver(
@@ -712,16 +912,20 @@ function initFireworksObserver() {
           entries[0].isIntersecting &&
           !fired
         ) {
+
           fired = true;
 
           launchFireworks();
           launchCelebration();
+
+          obs.disconnect();
         }
       },
       {
         threshold: 0.3
       }
     );
+
 
   if (finale) {
     obs.observe(finale);
@@ -737,79 +941,105 @@ function initGallery() {
       "gallery-track"
     );
 
+
   const dotsEl =
     document.getElementById(
       "gallery-dots"
     );
+
 
   const captionEl =
     document.getElementById(
       "gallery-caption"
     );
 
+
   const fsViewer =
     document.getElementById(
       "fullscreen-viewer"
     );
 
+
   const fsImg =
-    document.getElementById("fs-img");
+    document.getElementById(
+      "fs-img"
+    );
 
 
   let current = 0;
   let autoTimer;
 
 
-  // Build slides
-  CONFIG.photos.forEach((p, i) => {
+  CONFIG.photos.forEach(
+    (p, i) => {
 
-    const slide =
-      document.createElement("div");
-
-    slide.className =
-      "gallery-slide" +
-      (i === 0 ? " active" : "");
+      const slide =
+        document.createElement(
+          "div"
+        );
 
 
-    slide.innerHTML = `
-      <img
-        src="${p.src}"
-        alt="Photo ${i + 1}"
-        loading="lazy"
-        onclick="openFullscreen(${i})"
-        style="cursor:zoom-in"
-      >
-
-      <div class="gallery-overlay"></div>
-
-      <div class="gallery-slide-num">
-        ${i + 1} / ${CONFIG.photos.length}
-      </div>
-    `;
+      slide.className =
+        "gallery-slide" +
+        (i === 0
+          ? " active"
+          : "");
 
 
-    track.appendChild(slide);
+      slide.innerHTML = `
+        <img
+          src="${p.src}"
+          alt="Photo ${i + 1}"
+          loading="lazy"
+          onclick="openFullscreen(${i})"
+          style="cursor:zoom-in"
+        >
+
+        <div class="gallery-overlay"></div>
+
+        <div class="gallery-slide-num">
+          ${i + 1} / ${CONFIG.photos.length}
+        </div>
+      `;
 
 
-    const dot =
-      document.createElement("button");
+      track.appendChild(
+        slide
+      );
 
-    dot.className =
-      "gallery-dot" +
-      (i === 0 ? " active" : "");
 
-    dot.setAttribute(
-      "aria-label",
-      `Slide ${i + 1}`
-    );
+      const dot =
+        document.createElement(
+          "button"
+        );
 
-    dot.onclick = () => goTo(i);
 
-    dotsEl.appendChild(dot);
-  });
+      dot.className =
+        "gallery-dot" +
+        (i === 0
+          ? " active"
+          : "");
+
+
+      dot.setAttribute(
+        "aria-label",
+        `Slide ${i + 1}`
+      );
+
+
+      dot.onclick = () =>
+        goTo(i);
+
+
+      dotsEl.appendChild(
+        dot
+      );
+    }
+  );
 
 
   if (captionEl) {
+
     captionEl.textContent =
       CONFIG.photos[0].caption;
   }
@@ -822,33 +1052,41 @@ function initGallery() {
         ".gallery-slide"
       );
 
+
     const dots =
       dotsEl.querySelectorAll(
         ".gallery-dot"
       );
 
 
-    slides[current].classList.remove(
-      "active"
-    );
+    slides[current]
+      .classList.remove(
+        "active"
+      );
 
-    dots[current].classList.remove(
-      "active"
-    );
+
+    dots[current]
+      .classList.remove(
+        "active"
+      );
 
 
     current =
-      (n + CONFIG.photos.length) %
+      (n +
+        CONFIG.photos.length) %
       CONFIG.photos.length;
 
 
-    slides[current].classList.add(
-      "active"
-    );
+    slides[current]
+      .classList.add(
+        "active"
+      );
 
-    dots[current].classList.add(
-      "active"
-    );
+
+    dots[current]
+      .classList.add(
+        "active"
+      );
 
 
     track.style.transform =
@@ -857,14 +1095,19 @@ function initGallery() {
 
     if (captionEl) {
 
-      captionEl.style.opacity = "0";
+      captionEl.style.opacity =
+        "0";
+
 
       setTimeout(() => {
 
         captionEl.textContent =
-          CONFIG.photos[current].caption;
+          CONFIG.photos[
+            current
+          ].caption;
 
-        captionEl.style.opacity = "1";
+        captionEl.style.opacity =
+          "1";
 
       }, 350);
     }
@@ -876,11 +1119,15 @@ function initGallery() {
 
   function resetAuto() {
 
-    clearInterval(autoTimer);
+    clearInterval(
+      autoTimer
+    );
+
 
     autoTimer =
       setInterval(
-        () => goTo(current + 1),
+        () =>
+          goTo(current + 1),
         4000
       );
   }
@@ -901,8 +1148,8 @@ function initGallery() {
     goTo(current + 1);
 
 
-  // Touch swipe
   let touchStartX = 0;
+
 
   const container =
     document.querySelector(
@@ -913,8 +1160,11 @@ function initGallery() {
   container.addEventListener(
     "touchstart",
     (e) => {
+
       touchStartX =
-        e.touches[0].clientX;
+        e.touches[0]
+          .clientX;
+
     },
     {
       passive: true
@@ -928,26 +1178,35 @@ function initGallery() {
 
       const diff =
         touchStartX -
-        e.changedTouches[0].clientX;
+        e.changedTouches[0]
+          .clientX;
 
-      if (Math.abs(diff) > 40) {
+
+      if (
+        Math.abs(diff) > 40
+      ) {
+
         goTo(
           current +
-          (diff > 0 ? 1 : -1)
+          (diff > 0
+            ? 1
+            : -1)
         );
       }
     }
   );
 
 
-  // Fullscreen
-  window.openFullscreen = function (i) {
+  window.openFullscreen =
+    function (i) {
 
-    fsImg.src =
-      CONFIG.photos[i].src;
+      fsImg.src =
+        CONFIG.photos[i].src;
 
-    fsViewer.classList.add("show");
-  };
+      fsViewer.classList.add(
+        "show"
+      );
+    };
 
 
   document.getElementById(
@@ -962,12 +1221,14 @@ function initGallery() {
     "click",
     (e) => {
 
-      if (e.target === fsViewer) {
+      if (
+        e.target === fsViewer
+      ) {
+
         fsViewer.classList.remove(
           "show"
         );
       }
-
     }
   );
 }
@@ -984,10 +1245,12 @@ function initMessage() {
       "msg-body"
     );
 
+
   const cursor =
     document.getElementById(
       "msg-cursor"
     );
+
 
   const msgCard =
     document.querySelector(
@@ -1026,12 +1289,17 @@ function initMessage() {
 }
 
 
-function typeMessage(el, cursor) {
+function typeMessage(
+  el,
+  cursor
+) {
 
   const text =
     CONFIG.message;
 
+
   let i = 0;
+
 
   el.innerHTML = "";
 
@@ -1040,12 +1308,15 @@ function typeMessage(el, cursor) {
 
     if (i < text.length) {
 
-      const ch = text[i++];
+      const ch =
+        text[i++];
 
 
       if (ch === "\n") {
 
-        if (text[i] === "\n") {
+        if (
+          text[i] === "\n"
+        ) {
 
           el.innerHTML +=
             "<br><br>";
@@ -1060,7 +1331,8 @@ function typeMessage(el, cursor) {
 
       } else {
 
-        el.innerHTML += ch;
+        el.innerHTML +=
+          ch;
       }
 
 
@@ -1072,6 +1344,7 @@ function typeMessage(el, cursor) {
     } else {
 
       if (cursor) {
+
         cursor.style.display =
           "none";
       }
@@ -1090,15 +1363,19 @@ function initScrollReveal() {
     new IntersectionObserver(
       (entries) => {
 
-        entries.forEach((e) => {
+        entries.forEach(
+          (e) => {
 
-          if (e.isIntersecting) {
-            e.target.classList.add(
-              "visible"
-            );
+            if (
+              e.isIntersecting
+            ) {
+
+              e.target.classList.add(
+                "visible"
+              );
+            }
           }
-
-        });
+        );
 
       },
       {
@@ -1109,8 +1386,9 @@ function initScrollReveal() {
 
   document
     .querySelectorAll(".reveal")
-    .forEach((el) =>
-      obs.observe(el)
+    .forEach(
+      (el) =>
+        obs.observe(el)
     );
 }
 
@@ -1139,22 +1417,27 @@ function initClickEffects() {
       startMusicOnInteraction();
 
 
-      // Ripple
       const r =
         document.createElement(
           "div"
         );
 
+
       r.className =
         "ripple-circle";
+
 
       r.style.left =
         e.clientX + "px";
 
+
       r.style.top =
         e.clientY + "px";
 
-      document.body.appendChild(r);
+
+      document.body.appendChild(
+        r
+      );
 
 
       setTimeout(
@@ -1163,16 +1446,19 @@ function initClickEffects() {
       );
 
 
-      // Float emoji (30% chance)
-      if (Math.random() < 0.3) {
+      if (
+        Math.random() < 0.3
+      ) {
 
         const f =
           document.createElement(
             "div"
           );
 
+
         f.className =
           "float-emoji";
+
 
         f.textContent =
           emojis[
@@ -1182,13 +1468,22 @@ function initClickEffects() {
             )
           ];
 
+
         f.style.left =
-          e.clientX - 12 + "px";
+          e.clientX -
+          12 +
+          "px";
+
 
         f.style.top =
-          e.clientY - 12 + "px";
+          e.clientY -
+          12 +
+          "px";
 
-        document.body.appendChild(f);
+
+        document.body.appendChild(
+          f
+        );
 
 
         setTimeout(
@@ -1196,7 +1491,6 @@ function initClickEffects() {
           1500
         );
       }
-
     }
   );
 }
