@@ -1,12 +1,13 @@
+
 /* ═══════════════════════════════════════════════════════════
-   OWEN BIRTHDAY — main.js
+   GEORGIA BIRTHDAY — main.js
    ═══════════════════════════════════════════════════════════ */
 
 /* ── CONFIG — edit these to personalise ──────────────────── */
 const CONFIG = {
-  name: "Owen",
+  name: "Georgia",
 
-  message: `Happy Birthday, Owen! 🎉
+  message: `Happy Birthday, Georgia! 🎉
 
 Today, we celebrate you — your energy, your spirit, and everything that makes you who you are.
 
@@ -19,7 +20,7 @@ Happy Birthday! 🥂 This one's for you. 🥂`,
   photos: [
     {
       src: "images/photo1.jpg",
-      caption: "📸 Owen — always in the moment"
+      caption: "📸 Georgia — always in the moment"
     },
     {
       src: "images/photo2.jpg",
