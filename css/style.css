@@ -8,9 +8,9 @@
   --gold:        #d4af37;
   --gold-lt:     #f0d060;
   --gold-dk:     #a07820;
-  --blue:        #8f1a1a;
-  --blue-lt:     #cc2d2d;
-  --blue-glow:   rgba(204,45,45,0.45);
+  --blue:        #8f1a8f;
+  --blue-lt:     #cc2dcc;
+  --blue-glow:   rgba(204,45,204,0.45);
   --black:       #060810;
   --dark:        #0c1020;
   --white:       #ffffff;
@@ -36,7 +36,7 @@ button { cursor: pointer; }
 /* ── ANIMATED GRADIENT BG ────────────────────────────────── */
 #bg-layer {
   position: fixed; inset: 0; z-index: 0;
-  background: linear-gradient(135deg, #060810 0%, #350d0d 40%, #060810 70%, #1e0808 100%);
+  background: linear-gradient(135deg, #060810 0%, #3d0a2e 40%, #060810 70%, #2e0820 100%);
   background-size: 400% 400%;
   animation: bgShift 12s ease infinite;
 }
@@ -103,7 +103,7 @@ button { cursor: pointer; }
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center; padding: 2rem;
-  background: radial-gradient(ellipse at 50% 40%, #5a0d0d 0%, #060810 70%);
+  background: radial-gradient(ellipse at 50% 40%, #7a0d4a 0%, #060810 70%);
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 #welcome-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
@@ -224,7 +224,7 @@ section { position: relative; padding: 6rem 2rem; overflow: hidden; }
   min-height: 100svh;
   display: flex; align-items: center; justify-content: center;
   text-align: center;
-  background: radial-gradient(ellipse at 50% 60%, rgba(143,26,26,0.4) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 60%, rgba(200,30,120,0.4) 0%, transparent 70%);
 }
 .hero-party { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 0.5rem; }
 .hero-title {
@@ -344,7 +344,7 @@ section { position: relative; padding: 6rem 2rem; overflow: hidden; }
 /* ── MESSAGE ─────────────────────────────────────────────── */
 #message {
   text-align: center;
-  background: radial-gradient(ellipse at 50% 50%, rgba(143,26,26,0.25) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(180,30,110,0.25) 0%, transparent 70%);
 }
 .message-card {
   max-width: 640px; margin: 2rem auto 0;
@@ -380,7 +380,7 @@ section { position: relative; padding: 6rem 2rem; overflow: hidden; }
   min-height: 100svh;
   display: flex; align-items: center; justify-content: center;
   text-align: center;
-  background: radial-gradient(ellipse at 50% 50%, rgba(143,26,26,0.5) 0%, rgba(6,8,16,0) 70%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(180,30,110,0.5) 0%, rgba(6,8,16,0) 70%);
 }
 .finale-title {
   font-size: clamp(2.5rem, 10vw, 7rem);
