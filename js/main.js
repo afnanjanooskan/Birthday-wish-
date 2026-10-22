@@ -35,8 +35,52 @@ Happy Birthday! 🥂 This one's for you. 🥂`,
 
 let musicStarted = false;
 
+/* ── THEME ───────────────────────────────────────────────── */
+// Canvas colours, refreshed from the CSS variables whenever the theme changes
+const THEME = { accent: "", accentLt: "", accentRgb: "", accent2: "", accent2Rgb: "" };
+
+function hexToRgb(hex) {
+  const n = parseInt(hex.replace("#", ""), 16);
+  return `${(n >> 16) & 255},${(n >> 8) & 255},${n & 255}`;
+}
+
+function readThemeColors() {
+  const css = getComputedStyle(document.documentElement);
+  THEME.accent = css.getPropertyValue("--gold").trim();
+  THEME.accentLt = css.getPropertyValue("--gold-lt").trim();
+  THEME.accentRgb = css.getPropertyValue("--gold-rgb").trim();
+  THEME.accent2 = css.getPropertyValue("--accent2").trim();
+  THEME.accent2Rgb = hexToRgb(THEME.accent2);
+}
+
+function setTheme(name) {
+  document.documentElement.dataset.theme = name;
+  try { localStorage.setItem("birthday-theme", name); } catch (e) {}
+
+  document.querySelectorAll(".theme-swatch").forEach(btn => {
+    btn.setAttribute(
+      "aria-pressed",
+      btn.dataset.themeValue === name ? "true" : "false"
+    );
+  });
+
+  readThemeColors();
+}
+
+function initThemePicker() {
+  document.querySelectorAll(".theme-swatch").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      setTheme(btn.dataset.themeValue);
+    });
+  });
+
+  setTheme(document.documentElement.dataset.theme || "luxury");
+}
+
 /* ── DOM READY ───────────────────────────────────────────── */
 document.addEventListener("DOMContentLoaded", () => {
+  initThemePicker();
   initParticles();
   initSparkles();
   initGallery();
@@ -305,8 +349,8 @@ function initParticles() {
 
         ctx.fillStyle =
           this.hue === 45
-            ? "rgba(212,175,55,0.7)"
-            : "rgba(45,95,204,0.7)";
+            ? `rgba(${THEME.accentRgb},0.7)`
+            : `rgba(${THEME.accent2Rgb},0.7)`;
 
         ctx.fill();
 
@@ -327,8 +371,8 @@ function initParticles() {
 
         ctx.strokeStyle =
           this.hue === 45
-            ? "rgba(212,175,55,0.4)"
-            : "rgba(45,95,204,0.4)";
+            ? `rgba(${THEME.accentRgb},0.4)`
+            : `rgba(${THEME.accent2Rgb},0.4)`;
 
         ctx.lineWidth = 1;
 
@@ -339,7 +383,9 @@ function initParticles() {
       ) {
 
         ctx.fillStyle =
-          `hsla(${this.hue}, 90%, 75%, 1)`;
+          this.hue === 45
+            ? THEME.accentLt
+            : THEME.accent2;
 
         ctx.beginPath();
 
@@ -356,7 +402,9 @@ function initParticles() {
         ctx.shadowBlur = 8;
 
         ctx.shadowColor =
-          `hsla(${this.hue}, 90%, 75%, 0.8)`;
+          this.hue === 45
+            ? `rgba(${THEME.accentRgb},0.8)`
+            : `rgba(${THEME.accent2Rgb},0.8)`;
 
         ctx.fill();
 
@@ -381,12 +429,12 @@ function initParticles() {
         );
 
         ctx.fillStyle =
-          `rgba(212,175,55,${0.4 * pulse})`;
+          `rgba(${THEME.accentRgb},${0.4 * pulse})`;
 
         ctx.shadowBlur = 12;
 
         ctx.shadowColor =
-          "rgba(212,175,55,0.6)";
+          `rgba(${THEME.accentRgb},0.6)`;
 
         ctx.fill();
       }
@@ -500,13 +548,13 @@ function launchCelebration() {
 
 
   const colors = [
-    "#d4af37",
-    "#f0d060",
-    "#2d5fcc",
+    THEME.accent,
+    THEME.accentLt,
+    THEME.accent2,
     "#ffffff",
-    "#a07820",
-    "#6090ff",
-    "#ffd700"
+    THEME.accent,
+    THEME.accent2,
+    "#ffd6e5"
   ];
 
 
@@ -724,8 +772,8 @@ function launchFireworks() {
 
     const color =
       Math.random() < 0.5
-        ? "#d4af37"
-        : "#4d7fff";
+        ? THEME.accent
+        : THEME.accent2;
 
 
     const count =

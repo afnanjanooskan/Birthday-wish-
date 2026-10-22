@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="luxury">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,14 @@
   />
 
   <link rel="stylesheet" href="css/style.css" />
+
+  <script>
+    // Apply the saved colour theme before first paint
+    try {
+      const saved = localStorage.getItem("birthday-theme");
+      if (saved) document.documentElement.dataset.theme = saved;
+    } catch (e) {}
+  </script>
 </head>
 
 <body>
@@ -60,6 +68,14 @@
 
   </div>
 
+  <div id="theme-picker" role="group" aria-label="Colour theme">
+    <span class="theme-picker-label">Theme</span>
+    <button class="theme-swatch" data-theme-value="luxury" title="Soft Luxury Pink &amp; Gold" aria-label="Soft Luxury Pink and Gold"></button>
+    <button class="theme-swatch" data-theme-value="neon" title="Hot Pink Neon" aria-label="Hot Pink Neon"></button>
+    <button class="theme-swatch" data-theme-value="blush" title="Romantic Blush" aria-label="Romantic Blush"></button>
+    <button class="theme-swatch" data-theme-value="rose" title="Dark Rose" aria-label="Dark Rose"></button>
+  </div>
+
   <div id="welcome-screen">
 
     <div class="cake-wrapper">
@@ -69,9 +85,9 @@
         xmlns="http://www.w3.org/2000/svg"
       >
 
-        <rect x="40" y="28" width="8" height="26" rx="2" fill="#d4af37" />
-        <rect x="76" y="18" width="8" height="32" rx="2" fill="#c2185b" />
-        <rect x="112" y="28" width="8" height="26" rx="2" fill="#d4af37" />
+        <rect x="40" y="28" width="8" height="26" rx="2" style="fill:var(--gold)" />
+        <rect x="76" y="18" width="8" height="32" rx="2" style="fill:var(--cake-icing)" />
+        <rect x="112" y="28" width="8" height="26" rx="2" style="fill:var(--gold)" />
 
         <ellipse cx="44" cy="24" rx="5" ry="8" fill="#ff9933" opacity="0.9" class="candle-flame" />
         <ellipse cx="44" cy="22" rx="3" ry="5" fill="#ffdd55" />
@@ -82,8 +98,8 @@
         <ellipse cx="116" cy="24" rx="5" ry="8" fill="#ff9933" opacity="0.9" class="candle-flame" />
         <ellipse cx="116" cy="22" rx="3" ry="5" fill="#ffdd55" />
 
-        <rect x="36" y="54" width="88" height="32" rx="5" fill="#5c0f35" />
-        <rect x="36" y="54" width="88" height="10" rx="5" fill="#c2185b" />
+        <rect x="36" y="54" width="88" height="32" rx="5" style="fill:var(--cake-base)" />
+        <rect x="36" y="54" width="88" height="10" rx="5" style="fill:var(--cake-icing)" />
 
         <ellipse cx="55" cy="54" rx="6" ry="5" fill="white" opacity="0.9" />
         <ellipse cx="80" cy="54" rx="6" ry="5" fill="white" opacity="0.9" />
@@ -93,18 +109,18 @@
         <rect x="74" y="55" width="12" height="14" fill="white" opacity="0.9" />
         <rect x="99" y="55" width="12" height="14" fill="white" opacity="0.9" />
 
-        <text x="52" y="78" font-size="12" fill="#d4af37">★</text>
-        <text x="88" y="78" font-size="12" fill="#d4af37">★</text>
+        <text x="52" y="78" font-size="12" style="fill:var(--gold)">★</text>
+        <text x="88" y="78" font-size="12" style="fill:var(--gold)">★</text>
 
-        <rect x="22" y="86" width="116" height="38" rx="5" fill="#d4af37" />
-        <rect x="22" y="86" width="116" height="12" rx="5" fill="#f0d060" />
+        <rect x="22" y="86" width="116" height="38" rx="5" style="fill:var(--gold)" />
+        <rect x="22" y="86" width="116" height="12" rx="5" style="fill:var(--gold-lt)" />
 
-        <circle cx="50" cy="108" r="4" fill="#8b174d" />
+        <circle cx="50" cy="108" r="4" style="fill:var(--cake-dot)" />
         <circle cx="80" cy="108" r="4" fill="white" />
-        <circle cx="110" cy="108" r="4" fill="#8b174d" />
+        <circle cx="110" cy="108" r="4" style="fill:var(--cake-dot)" />
 
-        <rect x="10" y="124" width="140" height="44" rx="6" fill="#5c0f35" />
-        <rect x="10" y="124" width="140" height="14" rx="6" fill="#c2185b" />
+        <rect x="10" y="124" width="140" height="44" rx="6" style="fill:var(--cake-base)" />
+        <rect x="10" y="124" width="140" height="14" rx="6" style="fill:var(--cake-icing)" />
 
         <ellipse cx="35" cy="124" rx="8" ry="7" fill="white" opacity="0.85" />
         <ellipse cx="60" cy="124" rx="8" ry="7" fill="white" opacity="0.85" />
@@ -123,13 +139,13 @@
           font-size="13"
           font-family="serif"
           font-weight="bold"
-          fill="#d4af37"
+          style="fill:var(--gold)"
           text-anchor="middle"
         >
           HAPPY BIRTHDAY
         </text>
 
-        <ellipse cx="80" cy="169" rx="78" ry="8" fill="rgba(212,175,55,0.3)" />
+        <ellipse cx="80" cy="169" rx="78" ry="8" style="fill:rgba(var(--gold-rgb),0.3)" />
 
       </svg>
 
