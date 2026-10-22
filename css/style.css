@@ -30,9 +30,7 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
   font-family: 'Playfair Display', serif;
-  background:
-    radial-gradient(circle at top left, rgba(255, 170, 210, 0.18), transparent 30%),
-    linear-gradient(135deg, #180712 0%, #3e0c24 22%, #7a184a 52%, #c93d7d 76%, #ff9ec5 100%);
+  background: linear-gradient(135deg, #5c0632 0%, #a3125e 30%, #e0157f 60%, #ff1493 80%, #c2106c 100%);
   background-attachment: fixed;
   color: var(--white);
   overflow-x: hidden;
@@ -44,14 +42,12 @@ button { cursor: pointer; }
 /* ── ANIMATED GRADIENT BG ────────────────────────────────── */
 #bg-layer {
   position: fixed; inset: 0; z-index: 0;
-  background:
-    radial-gradient(circle at 15% 10%, rgba(255,255,255,0.08), transparent 18%),
-    linear-gradient(135deg, #1b0812 0%, #4a102d 20%, #7b1a4a 45%, #c33d7f 72%, #ff9cc3 100%);
-  background-size: 180% 180%;
-  animation: bgShift 16s ease-in-out infinite alternate;
+  background: linear-gradient(135deg, #5c0632 0%, #a3125e 18%, #e0157f 36%, #ff1493 52%, #ff2d8a 66%, #c2106c 82%, #7a0a45 100%);
+  background-size: 300% 300%;
+  animation: bgShift 12s ease-in-out infinite alternate;
 }
 @keyframes bgShift {
-  0%   { background-position: 0% 50%; }
+  0%   { background-position: 0% 0%; }
   50%  { background-position: 100% 50%; }
   100% { background-position: 50% 100%; }
 }
