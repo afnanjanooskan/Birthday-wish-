@@ -1,13 +1,13 @@
 
 /* ═══════════════════════════════════════════════════════════
-   Tami BIRTHDAY — main.js
+   Sarah BIRTHDAY — main.js
    ═══════════════════════════════════════════════════════════ */
 
 /* ── CONFIG — edit these to personalise ──────────────────── */
 const CONFIG = {
-  name: "Tami",
+  name: "Sarah",
 
-  message: `Happy Birthday, Tami! 🎉
+  message: `Happy Birthday, Sarah! 🎉
 
 Today, we celebrate you — your energy, your spirit, and everything that makes you who you are.
 
@@ -20,7 +20,7 @@ Happy Birthday! 🥂 This one's for you. 🥂`,
   photos: [
     {
       src: "images/photo1.jpg",
-      caption: "📸 Tami — always in the moment"
+      caption: "📸 Sarah — always in the moment"
     },
     {
       src: "images/photo2.jpg",
